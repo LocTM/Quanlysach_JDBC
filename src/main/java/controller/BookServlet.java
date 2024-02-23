@@ -118,15 +118,25 @@ public class BookServlet extends HttpServlet {
         String name = req.getParameter("name");
         String author = req.getParameter("author");
         int price = Integer.parseInt(req.getParameter("price"));
-        String [] categoriesStr = req.getParameterValues("categories");
-        int [] categories = new int[categoriesStr.length];
-        for (int i = 0; i < categoriesStr.length; i++) {
-            categories[i] = Integer.parseInt(categoriesStr[i]);
+
+        String[] categoriesStr = req.getParameterValues("categories");
+        if (categoriesStr != null) {
+            int[] categories = new int[categoriesStr.length];
+            for (int i = 0; i < categoriesStr.length; i++) {
+                categories[i] = Integer.parseInt(categoriesStr[i]);
+            }
+            Book book = new Book(name, author, price);
+            bookService.save(book, categories);
+
+            // Chuyển hướng người dùng đến trang danh sách sách sau khi đã tạo mới sách thành công
+            resp.sendRedirect(req.getContextPath() + "/");
+        } else {
+            // Xử lý khi categoriesStr là null
+            // Ví dụ: Hiển thị thông báo lỗi hoặc xử lý khác tùy thuộc vào yêu cầu của bạn
         }
-        Book book = new Book(name,author,price);
-        bookService.save(book,categories);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("book/create.jsp");
-        dispatcher.forward(req,resp);
     }
+
+
+
 
 }

@@ -1,37 +1,61 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Add New Category</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Books</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .search-form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+    .search-input {
+      border-radius: 5px;
+    }
+    .search-btn {
+      border-radius: 5px;
+    }
+    .book-list {
+      margin-top: 30px;
+    }
+    .book-item {
+      background-color: #ffffff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-<center>
-  <h2>Add New Category</h2>
-  <h3>
-    <a href="category">Return to Category List</a>
-  </h3>
-</center>
-<div align="center">
-  <form method="post" action="addCategory">
-    <table border="1" cellpadding="5">
-      <tr>
-        <th>Category Name:</th>
-        <td>
-          <input type="text" name="name" size="45" required/>
-        </td>
-      </tr>
-      <tr>
-        <th>Description:</th>
-        <td>
-          <textarea name="description" rows="4" cols="40"></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" align="center">
-          <button type="submit">Save</button>
-        </td>
-      </tr>
-    </table>
-  </form>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="search-form">
+        <form method="get" action="/books">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control search-input" placeholder="Search for books" name="search">
+            <button class="btn btn-primary search-btn" type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
 </div>
+</div>
+
 </body>
 </html>
